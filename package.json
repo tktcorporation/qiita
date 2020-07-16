@@ -2,7 +2,7 @@
   "name": "textlinter",
   "version": "1.0.0",
   "author": "tkt <tktcorporation.go@gmail.com>",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "scripts": {
     "lint": "textlint -f pretty-error docs/",
     "lint:fix": "textlint --fix pretty-error docs/",
