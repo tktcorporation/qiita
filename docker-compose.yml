@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  app:
+    image: node:14.5.0
+    container_name: app
+    working_dir: /app
+    volumes:
+      - ./:/app
