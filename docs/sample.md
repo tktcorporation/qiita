@@ -1,3 +1,0 @@
-# Linting texts
-
-- sample text
