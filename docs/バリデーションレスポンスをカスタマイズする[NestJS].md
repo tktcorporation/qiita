@@ -1,6 +1,6 @@
 # やりたいこと
 
-NestJS の WebAPI は class-validator を使ってリクエストの検証を行うことができる。
+NestJS の Web API は class-validator を使ってリクエストの検証を行うことができる。
 そして、そこで引っかかった項目をまとめて 400 のエラーを返してくれる。
 こんな感じ。
 
@@ -21,7 +21,7 @@ NestJS の WebAPI は class-validator を使ってリクエストの検証を行
 このレスポンスは class-validation が生成したクラスインスタンスからエラーメッセージ取り出して　Nest の Exception クラスを作成することによって作られている。
 そして、それは ValidationPipe の中で行われている。
 
-なので、ここの実装をいじってあげることで実現することができる。
+なので、ここの実装をいじってあげることで実現できる。
 
 ## ValidationPipe ってなに
 
@@ -36,7 +36,7 @@ await app.init();
 # 実装する
 
 ValidationPipe を拡張する形で作成。
-(private なプロパティが多かったので、この実装方法はあまり想定されていないのかも？)
+（private なプロパティが多かったので、この実装方法はあまり想定されていないのかも?）
 
 使っている BadRequestException は独自に実装したもので、ここでレスポンスの形を決めている。
 BadRequestException の実装については **[NestJS でエラーレスポンスをカスタマイズしてみる](https://qiita.com/tktcorporation/items/936135b551ce555a4626)** ここで書いている。
