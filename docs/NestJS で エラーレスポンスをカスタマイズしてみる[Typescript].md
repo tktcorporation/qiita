@@ -14,15 +14,15 @@
 
 ```json
 {
-   "message": "Bad Request",
-   "errors": [
-     {
-       "resource": "Issue",
-       "field": "id",
-       "code": "must be number"
-     }
-   ]
- }
+  "message": "Bad Request",
+  "errors": [
+    {
+      "resource": "Issue",
+      "field": "id",
+      "code": "must be number"
+    }
+  ]
+}
 ```
 
 (どちらも Status Code は 400 が返る想定)
@@ -38,52 +38,45 @@ NestJS は最後まで Catch されなかった Exception を拾ってエラー�
 ### Base
 
 ```ts
-import { HttpException, HttpStatus } from '@nestjs/common';
+import { HttpException, HttpStatus } from "@nestjs/common";
 
 export class CustomHttpException extends HttpException {
-    constructor(
-        message: string,
-        errors: Array<{
-            resource: string,
-            field: string,
-            code: string,
-        }>,
-        statusCode: HttpStatus,
-    ) {
-        const response = {
-            code,
-            title,
-            message,
-        };
-        super(
-            HttpException.createBody(response, message, statusCode),
-            statusCode,
-        );
-    }
+  constructor(
+    message: string,
+    errors: Array<{
+      resource: string;
+      field: string;
+      code: string;
+    }>,
+    statusCode: HttpStatus
+  ) {
+    const response = {
+      code,
+      title,
+      message,
+    };
+    super(HttpException.createBody(response, message, statusCode), statusCode);
+  }
 }
 ```
 
 ### Bad Request 用
 
 ```ts
-import { HttpStatus } from '@nestjs/common';
-import { CustomHttpException } from './CustomHttpException';
+import { HttpStatus } from "@nestjs/common";
+import { CustomHttpException } from "./CustomHttpException";
 
 export class BadRequestException extends CustomHttpException {
-    static readonly message = 'Bad Request';
-    constructor(
-        errors: Array<{
-            resource: string,
-            field: string,
-            code: string,
-        }>,
-    ) {
-        super(
-            BadRequestException.message,
-            errors,
-            HttpStatus.BAD_REQUEST,
-        );
-    }
+  static readonly message = "Bad Request";
+  constructor(
+    errors: Array<{
+      resource: string;
+      field: string;
+      code: string;
+    }>
+  ) {
+    super(BadRequestException.message, errors, HttpStatus.BAD_REQUEST);
+  }
 }
 ```
 
@@ -93,11 +86,10 @@ export class BadRequestException extends CustomHttpException {
 
 ```ts
 throw new BadRequestException([
-    {
-       resource: "Issue",
-       field: "id",
-       code: "must be number"
-    },
-])
+  {
+    resource: "Issue",
+    field: "id",
+    code: "must be number",
+  },
+]);
 ```
-
