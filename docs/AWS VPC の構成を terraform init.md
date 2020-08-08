@@ -8,7 +8,7 @@
 
 ## vpc.tf
 
-```t
+```tf
 provider "aws" {
   version = "~> 3.1"
 }
@@ -34,7 +34,7 @@ resource "aws_vpc" "vpc" {
 
 ## 元ファイル
 
-```t
+```tf
 provider "aws" {}
 
 variable "project_prefix" {}
@@ -89,7 +89,7 @@ provider "aws" {
 
 ### 該当箇所
 
-```t
+```tf
   cidr_block       = "${var.vpc_cidr}"
 ```
 
@@ -116,7 +116,7 @@ to templates that consist entirely of a single interpolation sequence.
 
 普通に変数使うときは、わざわざ `""` で囲わんでもええで、ってことらしい。
 
-```t
+```tf
   cidr_block       = var.vpc_cidr
 ```
 
@@ -124,7 +124,7 @@ to templates that consist entirely of a single interpolation sequence.
 
 ### 該当箇所
 
-```t
+```tf
 resource "aws_vpc" "${var.project_prefix}-vpc" {
 ```
 
@@ -153,7 +153,7 @@ double it (as "$$") to escape it.
 ここは AWS 上の名前ではなく、 Terraform 都合の名前を置く場所らしい。
 名前は tags のプロパティを用いて指定する。
 
-```t
+```tf
 resource "aws_vpc" "vpc" {
 
   tags = {
@@ -186,9 +186,3 @@ commands will detect it and remind you to do so if necessary.
 # 次やりたいこと
 
 - plan, apply
-
-- Docker 化
-- リソース間連携
-  - VPC に IGW 生やして Attach したり
-- module 分割
-- workspace の活用
