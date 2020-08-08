@@ -10,6 +10,7 @@
     "preset-ja-technical-writing": {
         "no-exclamation-question-mark": false,
         "ja-no-weak-phrase": false,
+        "ja-no-redundant-expression": false,
     },
     "spellcheck-tech-word": true
   }
