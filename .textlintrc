@@ -11,6 +11,7 @@
         "no-exclamation-question-mark": false,
         "ja-no-weak-phrase": false,
         "ja-no-redundant-expression": false,
+        "ja-no-successive-word": false,
     },
     "spellcheck-tech-word": true
   }
